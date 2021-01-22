@@ -1,0 +1,40 @@
+<div *ngIf="!listData" class="parent">
+  <h2 class="center">There is not Files in your Database</h2>
+</div>
+<div class='contour' *ngIf="listData">
+<h3>Files</h3>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="listData" matSort>
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> #id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="fileUrl">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> fileUrl </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fileUrl}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="createdAt">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> CreatedAt </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.created_at| date :'dd/MM/yyyy HH:mm:ss'}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+</div>

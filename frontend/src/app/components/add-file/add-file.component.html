@@ -1,0 +1,72 @@
+<div class="contour">
+  <mat-card>
+
+    <mat-card-header class="red lighten-4 white-text  py-4">
+      <h5>
+        <strong>Add File</strong>
+      </h5>
+    </mat-card-header>
+
+
+    <!--Card content-->
+    <mat-card-content class="px-lg-5 pt-0">
+
+      <!-- Form -->
+      <form
+      class="text-center"
+      style="color: #757575;"
+      (ngSubmit)="onSubmit()"
+      #f="ngForm"
+      >
+
+        <!-- Name -->
+
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>your chosen name of file</mat-label>
+          <input
+          matInput
+          ngModel
+          name="name"
+          required
+          #name="ngModel"
+          >
+          <mat-hint *ngIf="!name.valid && name.touched">please enter a valid name</mat-hint>
+        </mat-form-field>
+
+
+        <div class="button-image">
+          <label id="label-image" style="text-align: right;color: grey; font-weight: bold;">choose File *</label><br>
+          <button type="button" mat-raised-button matInput (click)="fileInput.click()" color="accent">
+            <span class="material-icons" style="font-size: 30px;">
+              post_add
+            </span>
+          </button>
+          <br>
+          <input
+          hidden
+          (change)="handleFileInput($event.target.files);"
+          #fileInput
+          type="file" id="file"
+          accept="image/jpg, image/png, application/pdf, image/jpeg"
+          name="fileUpload"
+          ngModel
+          required
+          >
+        </div>
+
+        <p *ngIf="nameFile">{{nameFile}}</p>
+
+        <!-- Send button -->
+            <button
+            mat-raised-button color="warn"
+            style="margin-left: 250px;"
+            type="submit"
+            [disabled]="!f.valid"
+            >Add</button>
+      </form>
+      <!-- Form -->
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

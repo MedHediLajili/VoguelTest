@@ -1,0 +1,28 @@
+mat-card{
+  width: 400px;
+}
+
+.contour{
+  margin-top:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+strong{
+  color :brown;
+  text-align: center;
+  padding-left: 120px;
+  padding-bottom: 60px;
+}
+.remove{
+border-radius: 70%;
+  height: 30px;
+  width: 30px;
+}
+
+
